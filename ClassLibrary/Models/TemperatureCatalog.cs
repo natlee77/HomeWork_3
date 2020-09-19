@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary
+namespace ClassLibrary.Models
 {
     public class TemperatureCatalog
     {
