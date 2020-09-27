@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ClassLibrary.Models;
+using ClassLibrary.Services;
+using Microsoft.Azure.Devices;
+using Microsoft.Azure.Devices.Client;
 
 namespace ConsoleApp_Device
 {
     class Program
     {
-        static void Main(string[] args)// sync  huvud tråd //aldrig await resultat
-        { 
-              DoWork());  
+        private static readonly string _conn = "";
+
+
+        
+        private static readonly DeviceClient deviceClient = DeviceClient.
+       CreateFromConnectionString(_conn, TransportType.Mqtt);
+
+
+        static void Main(string[] args)
+        {
+            DeviceService.SendMessageAsync(deviceClient).GetAwaiter();
         }
-        
-        static  void  DoWork()  //back liggande system
-        {
-            Task.Run(() => DoWorkAsync());
-        } 
-         
 
 
-        static async Task  DoWorkAsync ()
-        {
-            var result = await Task.Run(() => { return 1; });// retunera nån
 
-            Console.WriteLine("{result}");
-        }  
-        
+
     }
 }
