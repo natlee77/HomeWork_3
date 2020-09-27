@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp_Device", "Consol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{0CAB3A36-4252-4BE1-B156-2459F23AA2D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunction", "AzureFunction\AzureFunction.csproj", "{A6E587BA-15CA-43A4-B0CA-BE8A0BCC5555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0CAB3A36-4252-4BE1-B156-2459F23AA2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CAB3A36-4252-4BE1-B156-2459F23AA2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CAB3A36-4252-4BE1-B156-2459F23AA2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E587BA-15CA-43A4-B0CA-BE8A0BCC5555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E587BA-15CA-43A4-B0CA-BE8A0BCC5555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E587BA-15CA-43A4-B0CA-BE8A0BCC5555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E587BA-15CA-43A4-B0CA-BE8A0BCC5555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

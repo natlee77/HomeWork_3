@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
 using ClassLibrary.Models;
+using MAD = Microsoft.Azure.Devices;
 
 
 namespace ClassLibrary.Services
@@ -25,17 +26,41 @@ namespace ClassLibrary.Services
                     Humidity = rnd.Next(30, 60)
                 };
 
-                // mdl ska konvertera i json format{"temperature":20, "humidity": 44}
+                
                 var json = JsonConvert.SerializeObject(data);
 
-                //skicka mdl=payload/ Message-från  Microsoft.Azure.Devices.Client;
-                //Encoding-formatera
-                var payload = new Message(Encoding.UTF8.GetBytes(json));// Bytes 0 eller 1
-                await deviceClient.SendEventAsync(payload);//använda message/ async = await /det skicka mdl i molnet
+                
+                var payload = new Message(Encoding.UTF8.GetBytes(json));// 
+                await deviceClient.SendEventAsync(payload);
 
                 Console.WriteLine($"Message sent : {json}");
                 await Task.Delay(60 * 1000);
             }
         }
+
+
+        public static async Task ReceiveMessageAsync(DeviceClient deviceClient)//receive mdl från enheten 
+        {
+            while (true) 
+            {
+                var payload = await deviceClient.ReceiveAsync();
+
+                if (payload == null)
+                    continue;
+
+                Console.WriteLine($"Message Received:{Encoding.UTF8.GetString(payload.GetBytes())}");
+                
+                await deviceClient.CompleteAsync(payload);
+            }
+        }
+
+
+        public static async Task SendMessageToDeviceAsync(MAD.ServiceClient serviceClient, string targetDeviceId, string message)
+        {
+            var payload = new MAD.Message(Encoding.UTF8.GetBytes(message));
+            await serviceClient.SendAsync(targetDeviceId, payload);
+
+        }
+         
     }
 }

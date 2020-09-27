@@ -9,17 +9,20 @@ namespace ConsoleApp_Device
 {
     class Program
     {
-        private static readonly string _conn = "";
+        private static readonly string _conn = "HostName=ecwin20IoTHub.azure-devices.net;DeviceId=consoleapp;SharedAccessKey=3RSw06VBsoW/NBcIcqQ2tSm6tgWUoNDD+GxRHARsZ78=";
 
 
         
         private static readonly DeviceClient deviceClient = DeviceClient.
-       CreateFromConnectionString(_conn, TransportType.Mqtt);
+       CreateFromConnectionString(_conn, Microsoft.Azure.Devices.Client.TransportType.Mqtt);
 
 
         static void Main(string[] args)
         {
             DeviceService.SendMessageAsync(deviceClient).GetAwaiter();
+            DeviceService.ReceiveMessageAsync(deviceClient).GetAwaiter();
+
+            Console.ReadKey();
         }
 
 
